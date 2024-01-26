@@ -2,7 +2,6 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Ace from "../ace.png"
 import LastSeen from "../../components/LastSeen";
 import DeleteButton from "@/app/components/Buttons/DeleteButton";
 
@@ -50,7 +49,10 @@ export default async function RecipeDetails({params}){
                 </div>
 
                 <div>
-                <Image src={Ace}
+                <Image
+                src={`${food.image_path}`}
+                width={500}
+                height={500}
                 alt="ace"
                 className="w-ful h-52 sm:h-60 object-cover rounded-md"
                 />

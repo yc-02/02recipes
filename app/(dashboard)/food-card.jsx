@@ -2,10 +2,11 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import Image from 'next/image'
-import Ace from './ace.png'
 import LastSeen from "../components/LastSeen";
 import Link from "next/link";
 import Likes from "./likes";
+
+
 export const dynamic ="force-dynamic"
 
 export default async function FoodCard() {
@@ -22,14 +23,15 @@ export default async function FoodCard() {
       }
     })
 
-
-
     return (
     <div className="mt-8 grid md:grid-cols-3 gap-10 ">
     {recipes?.map((food)=>(
         <div key={food.id} className="card hover:shadow-lg">
           <Link href={`/${food.id}`}>
-          <Image src={Ace}
+          <Image
+          src={`${food.image_path}`}
+          width={500}
+          height={500}
           alt="ace"
           className="w-full h-48 sm:h-52 object-cover"
           />

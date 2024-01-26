@@ -3,18 +3,31 @@
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 import {redirect} from "next/navigation"
-
+// import { decode } from 'base64-arraybuffer'
+import {v4 as uuidv4} from 'uuid'
 
 export async function AddFoodCard(formData){
     const food=Object.fromEntries(formData)
     const supabase=createServerActionClient({cookies})
     const {data:{user}}=await supabase.auth.getUser()
+
+        const file = food.image_data
+        const filePath = `${user.id}/${uuidv4()}`
+        const {data:uploadData,error:uploadError} = await supabase.storage.from('test').upload(filePath,file,{
+                contentType:  'image/png,image/jpeg',
+        })
+        if (uploadError){
+            console.log(uploadError)
+        }else{
+        console.log(uploadData.fullPath)}
+
+
     const {error}=await supabase.from("recipes").insert({
         recipe_name:food.recipe_name,
-        image_data:food.image_data,
         description:food.description,
         time_used:food.time_used,
-        user_id:user.id
+        user_id:user.id,
+        image_path:uploadData.fullPath
     })
     if (error){
         throw new Error (error.message)
@@ -22,6 +35,7 @@ export async function AddFoodCard(formData){
     else{
         redirect('/')
     }
+
 }
 
 export async function signupUser(formData){
