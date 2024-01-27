@@ -24,7 +24,7 @@ export default async function FoodCard() {
     })
 
     return (
-    <div className="mt-8 grid md:grid-cols-3 gap-10 ">
+    <div className="grid md:grid-cols-3 gap-10 ">
     {recipes?.map((food)=>(
         <div key={food.id} className="card hover:shadow-lg">
           <Link href={`/${food.id}`}>

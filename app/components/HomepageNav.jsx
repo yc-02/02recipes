@@ -2,23 +2,19 @@
 import Link from "next/link"
 import { useState } from "react"
 
+export default function HomepageNavbar() {
 
-export default function Navbar() {
     const [open,setOpen] = useState(false)
     const toggle = () => {
         setOpen(!open);
       };
 
   return (
-    <div className="md:flex md:justify-end shadow-sm">
+    <div  className="md:col-span-1 md:flex md:justify-end shadow-sm">
     <nav className="text-right">
         <div className="flex justify-between items-center">
             <h1 className="font-bold uppercase p-4 md:border-b border-gray-100">
-                <Link href="/" className="hidden hover:text-neutral-500 md:block">02 Recipes</Link>
-                <Link href="/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 md:hidden">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-                                </svg>
-                </Link>
+                <Link href="/" className=" hover:text-neutral-500">02 Recipes</Link>
             </h1>
             <div className="px-4 cursor-pointer md:hidden" id="burger">
             <svg  onClick={toggle} className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import LastSeen from "../../components/LastSeen";
 import DeleteButton from "@/app/components/Buttons/DeleteButton";
+import Link from "next/link";
 
 export const dynamicParams = true
 
@@ -34,13 +35,14 @@ export default async function RecipeDetails({params}){
     const {data} = await supabase.auth.getSession()
 
     return(
-        <div className="p-10 md:col-span-5 bg-neutral-100">
-{data.session?(
+        <div className="p-10 bg-neutral-100">
+        {data.session?(
             <>
-            <div className="flex justify-between shadow-sm">
+            <div className="flex justify-between shadow-sm items-baseline">
             <h2 className="text-4xl font-semibold text-neutral-600 ">Recipe Details</h2>
             {data.session?.user.id === food.user_id && (<DeleteButton id={food.id}/>)}
             </div>
+
             <div className="grid mt-2 md:grid-cols-2 gap-4 ">
                 <div className=" ml-10 mt-10">
                 <h3 className="font-bold uppercase text-3xl mb-5">{food.recipe_name}</h3>
@@ -67,7 +69,10 @@ export default async function RecipeDetails({params}){
             </div>
             </>
             ):
-            (<div className="text-center font-bold"><p>Please Sign in first.</p></div>)}
+            (<div className="text-center font-bold">
+                <p className="mb-4">Please Sign in first.</p>
+                <Link href="/signin" className="btn-secondary " > Sign in</Link>
+            </div>)}
         </div>
     )
 }

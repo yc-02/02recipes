@@ -1,23 +1,25 @@
 "use client"
 import { signupUser } from "@/app/actions"
-import SignupButton from "@/app/components/Buttons/SignupButton"
+import { SignupButton } from "@/app/components/Buttons/SubmitButtons"
 import Link from "next/link"
-
+import { Form, useForm } from "react-hook-form"
 
 
 export default function SignupForm() {
 
+const{register,control}=useForm()
 
 
   return (
     <div className="form">
-    <form action={signupUser}>
+    <form
+    action={signupUser}
+    >
       <label className="lable">
         <span>Email:</span>
         <input
           type="email"
           name="email"
-          required
           className="input"
         />
       </label>
@@ -26,6 +28,7 @@ export default function SignupForm() {
         <input
           type="password"
           name="password"
+          minLength="6"
           required
           className="input"
         />

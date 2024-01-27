@@ -1,24 +1,23 @@
 "use client"
 
-import SigninButton from '@/app/components/Buttons/SigninButton'
-import { useState } from 'react'
-import Link from 'next/link'
 
-export default function SigninForm({ handleSubmit }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+import Link from 'next/link'
+import { signin } from '@/app/actions'
+import { SigninButton } from '@/app/components/Buttons/SubmitButtons'
+
+
+export default function SigninForm() {
 
 
   return (
     <div className="form" >
-    <form onSubmit={(e) => handleSubmit(e, email, password)}>
+    <form action={signin}>
       <div>
       <label className='lable'>
         <span>Email:</span>
         <input
           type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          name='email'
           required
           className="input"
         />
@@ -29,8 +28,7 @@ export default function SigninForm({ handleSubmit }) {
         <span>Password:</span>
         <input
           type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
+          name='password'
           required
           className="input"
         />
@@ -38,7 +36,7 @@ export default function SigninForm({ handleSubmit }) {
       </div>
       <div>
       <SigninButton/>
-      <Link className="inline-block align-baseline font-bold" href="#">Forgot Password?</Link>
+      <Link className="inline-block font-bold" href="#">Forgot Password?</Link>
       </div>
       <div className="mt-4 border-t-2 border-neutral-200 pt-2">
         <h3>Don&apos;t have an account?</h3>
