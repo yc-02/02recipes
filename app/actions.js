@@ -1,7 +1,7 @@
 "use server"
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
-import {redirect,revalidatePath} from "next/navigation"
+import {redirect} from "next/navigation"
 import {v4 as uuidv4} from 'uuid'
 
 const supabase=createServerActionClient({cookies})
