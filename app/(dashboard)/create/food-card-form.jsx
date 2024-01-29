@@ -4,6 +4,7 @@
 import { SubmitButton } from "@/app/components/Buttons/SubmitButtons"
 import { AddFoodCard } from "../../actions"
 import { useState } from "react";
+import Image from "next/image";
 
 export default function FoodCardForm() {
  
@@ -34,7 +35,7 @@ export default function FoodCardForm() {
             <input type="file" accept="image/png,image/jpeg" name="image_data" className="input mb-2" multiple onChange={handleChange}/>
         </label>
         {file&&<div className="flex justify-center input mb-2">
-        <img src={file} alt="file" width={200}/>
+        <Image src={file} alt="file" width={300} height={300}/>
         </div>}
         <SubmitButton/>
     </form>

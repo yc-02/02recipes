@@ -3,7 +3,7 @@ import {Assistant} from 'next/font/google'
 import SmallScreenSubNav from "./components/SmallScreenSubNav";
 
 const assistant = Assistant({subsets:[]})
-
+export const dynamic = 'force-dynamic'
 export const metadata = {
   title: "02 Recipes",
   description: "Homemade recipes",

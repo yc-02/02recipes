@@ -3,7 +3,7 @@ import { cookies } from "next/headers"
 import Link from "next/link"
 import SignoutButton from "./Buttons/SignoutButton";
 
-export const dynamic ="force-dynamic"
+
 
 export default async function SubNav() {
   const supabase = createServerComponentClient({cookies});

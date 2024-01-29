@@ -7,7 +7,7 @@ import Link from "next/link";
 import Likes from "./likes";
 
 
-export const dynamic ="force-dynamic"
+
 
 export default async function FoodCard() {
 

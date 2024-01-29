@@ -6,7 +6,6 @@ import LastSeen from "../../components/LastSeen";
 import DeleteButton from "@/app/components/Buttons/DeleteButton";
 import Link from "next/link";
 
-export const dynamicParams = true
 
 export async function generateMetadata({params}){
     const supabase=createServerComponentClient({cookies})
